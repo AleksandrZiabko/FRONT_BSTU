@@ -8,7 +8,9 @@ import {Provider} from 'react-redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
-import Home from 'containers/home'
+import Layout from 'containers/layout'
+
+const layoutPages = Component => props => <Layout><Component {...props} /></Layout>;
 
 const store = createStore(reducers, composeWithDevTools(
     applyMiddleware(thunk)
@@ -18,7 +20,7 @@ ReactDOM.render(
     <Provider store = {store}>
         <BrowserRouter>
             <Switch>
-                <Route exact path = '/' component = {Home}/>
+                <Route exact path = '/' component = {Layout}/>
             </Switch>
         </BrowserRouter>
     </Provider>,
